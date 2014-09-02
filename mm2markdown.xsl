@@ -36,10 +36,14 @@
         <xsl:value-of select="normalize-space(@TEXT)" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="tokenizeString">
-          <xsl:with-param name="text" select="@TEXT"/>
-          <xsl:with-param name="delimiter" select="' '" />
-        </xsl:call-template>
+        <xsl:text>% </xsl:text>
+        <xsl:value-of select="substring-before(@TEXT, '&#xa;')" />
+        <xsl:text>&#xa;% </xsl:text>
+        <xsl:value-of select="substring-after(@TEXT, '&#xa;')" />
+        <!-- xsl:call-template name="tokenizeString" mode="tokenizeTitle">
+          <xsl:with-param name="list" select="@TEXT"/>
+          <xsl:with-param name="delimiter" select="'&#xA;'" />
+        </xsl:call-template -->
       </xsl:otherwise>
     </xsl:choose>
     <xsl:text>&#xA;</xsl:text>
@@ -103,12 +107,7 @@
     <xsl:text>&#xa;</xsl:text> <!-- Block element -->
   </xsl:template>
 
-  <xsl:template name="tokenizeString">
-    <xsl:param name="text" />
-    <xsl:param name="delimiter" />
-    <xsl:text>% </xsl:text>
-    <xsl:value-of select="$text" />
-  </xsl:template>
+
 
   <!-- TEMPLATE: headingIndicator -->
   <xsl:template name="headingIndicator">
