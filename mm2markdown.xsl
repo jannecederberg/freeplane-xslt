@@ -36,17 +36,18 @@
         <xsl:value-of select="normalize-space(@TEXT)" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>% </xsl:text>
-        <xsl:value-of select="substring-before(@TEXT, '&#xa;')" />
-        <xsl:text>&#xa;% </xsl:text>
-        <xsl:value-of select="substring-after(@TEXT, '&#xa;')" />
+        <xsl:call-template name="tokenizeTitle">
+          <xsl:with-param name="text" select="@TEXT" />
+        </xsl:call-template>
+        <!-- xsl:text>% </xsl:text>
+        <xsl:value-of select="@TEXT" / -->
         <!-- xsl:call-template name="tokenizeString" mode="tokenizeTitle">
           <xsl:with-param name="list" select="@TEXT"/>
           <xsl:with-param name="delimiter" select="'&#xA;'" />
         </xsl:call-template -->
       </xsl:otherwise>
     </xsl:choose>
-    <xsl:text>&#xA;</xsl:text>
+    <xsl:text>&#xa;</xsl:text>
     <xsl:choose>
       <xsl:when test="richcontent">
         <xsl:apply-templates select="richcontent/html/body" mode="richtext" />
@@ -55,6 +56,24 @@
       </xsl:otherwise>
     </xsl:choose>
     <xsl:apply-templates select="node" />
+  </xsl:template>
+
+  <xsl:template name="tokenizeTitle">
+    <xsl:param name="text" />
+    <xsl:text>% </xsl:text>
+    <xsl:choose>
+      <xsl:when test="not(contains($text, '&#xa;'))">
+        <xsl:value-of select="normalize-space($text)" />
+        <xsl:text>&#xa;</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="normalize-space(substring-before($text, '&#xa;'))" />
+        <xsl:text>&#xa;</xsl:text>
+        <xsl:call-template name="tokenizeTitle">
+          <xsl:with-param name="text" select="substring-after($text, '&#xa;')" />
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="body" mode="richtext">
@@ -106,8 +125,6 @@
     <xsl:apply-templates select="*|text()" mode="richtext" />
     <xsl:text>&#xa;</xsl:text> <!-- Block element -->
   </xsl:template>
-
-
 
   <!-- TEMPLATE: headingIndicator -->
   <xsl:template name="headingIndicator">
