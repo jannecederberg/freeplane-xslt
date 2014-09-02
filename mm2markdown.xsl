@@ -26,22 +26,20 @@
     <xsl:variable name="depth">
       <xsl:apply-templates select=".." mode="depthMesurement"/>
     </xsl:variable>
-    <xsl:if test="$depth > 0">
-      <xsl:text>&#xA;</xsl:text>
-      <xsl:call-template name="headingIndicator">
-        <xsl:with-param name="count" select="$depth"/>
-      </xsl:call-template>
-    </xsl:if>
-    <xsl:text> </xsl:text>
     <xsl:choose>
-      <xsl:when test="$depth = 0">
-        <xsl:call-template name="tokenizeString">
-          <xsl:with-param name="string" select="./@TEXT"/>
-          <xsl:with-param name="delimiter" select="'\n'"/>
+      <xsl:when test="$depth > 0">
+        <xsl:text>&#xA;</xsl:text>
+        <xsl:call-template name="headingIndicator">
+          <xsl:with-param name="count" select="$depth"/>
         </xsl:call-template>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="normalize-space(@TEXT)" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:value-of select="normalize-space(@TEXT)" />
+        <xsl:call-template name="tokenizeString">
+          <xsl:with-param name="text" select="@TEXT"/>
+          <xsl:with-param name="delimiter" select="' '" />
+        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
     <xsl:text>&#xA;</xsl:text>
@@ -106,37 +104,13 @@
   </xsl:template>
 
   <xsl:template name="tokenizeString">
-    <!--passed template parameter -->
-    <xsl:param name="string" />
+    <xsl:param name="text" />
     <xsl:param name="delimiter" />
-    <xsl:choose>
-      <xsl:when test="contains($string, $delimeter)">               
-        <color>
-          <!-- get everything in front of the first delimiter -->
-          <xsl:value-of select="substring-before($string,$delimiter)"/>
-        </color>
-        <xsl:call-template name="tokenizeString">
-          <!-- store anything left in another variable -->
-          <xsl:with-param name="list" select="substring-after($string,$delimiter)"/>
-          <xsl:with-param name="delimiter" select="$delimiter"/>
-        </xsl:call-template>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:choose>
-          <xsl:when test="$string = ''">
-            <xsl:text/>
-          </xsl:when>
-          <xsl:otherwise>
-            <color>
-              <xsl:value-of select="$string"/>
-            </color>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:text>% </xsl:text>
+    <xsl:value-of select="$text" />
   </xsl:template>
 
-  <!-- TEMPLATE: hashes -->
+  <!-- TEMPLATE: headingIndicator -->
   <xsl:template name="headingIndicator">
     <xsl:param name="count" select="1"/>
     <xsl:if test="$count > 0">
