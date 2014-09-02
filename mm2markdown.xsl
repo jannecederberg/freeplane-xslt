@@ -4,7 +4,10 @@
     This file is licensed under the GPL.
 -->
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink">
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  
   <xsl:output method="text" indent="yes" />
   <xsl:strip-space elements="*" />
 
@@ -23,21 +26,24 @@
     <xsl:variable name="depth">
       <xsl:apply-templates select=".." mode="depthMesurement"/>
     </xsl:variable>
+    <xsl:if test="$depth > 0">
+      <xsl:text>&#xA;</xsl:text>
+      <xsl:call-template name="headingIndicator">
+        <xsl:with-param name="count" select="$depth"/>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:text> </xsl:text>
     <xsl:choose>
       <xsl:when test="$depth = 0">
-        <xsl:call-template name="titleIndicator">
-          <xsl:with-param name="count" select="$depth"/>
+        <xsl:call-template name="tokenizeString">
+          <xsl:with-param name="string" select="./@TEXT"/>
+          <xsl:with-param name="delimiter" select="'\n'"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:text>&#xA;</xsl:text>
-        <xsl:call-template name="headingIndicator">
-          <xsl:with-param name="count" select="$depth"/>
-        </xsl:call-template>
+        <xsl:value-of select="normalize-space(@TEXT)" />
       </xsl:otherwise>
-    </xsl:choose>    
-    <xsl:text> </xsl:text>
-    <xsl:value-of select="normalize-space(@TEXT)" />
+    </xsl:choose>
     <xsl:text>&#xA;</xsl:text>
     <xsl:choose>
       <xsl:when test="richcontent">
@@ -99,11 +105,35 @@
     <xsl:text>&#xa;</xsl:text> <!-- Block element -->
   </xsl:template>
 
-  <xsl:template name="titleIndicator">
-    <xsl:param name="count" select="0"/>
-    <xsl:if test="$count = 0">
-      <xsl:text>% </xsl:text>
-    </xsl:if>
+  <xsl:template name="tokenizeString">
+    <!--passed template parameter -->
+    <xsl:param name="string" />
+    <xsl:param name="delimiter" />
+    <xsl:choose>
+      <xsl:when test="contains($string, $delimeter)">               
+        <color>
+          <!-- get everything in front of the first delimiter -->
+          <xsl:value-of select="substring-before($string,$delimiter)"/>
+        </color>
+        <xsl:call-template name="tokenizeString">
+          <!-- store anything left in another variable -->
+          <xsl:with-param name="list" select="substring-after($string,$delimiter)"/>
+          <xsl:with-param name="delimiter" select="$delimiter"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="$string = ''">
+            <xsl:text/>
+          </xsl:when>
+          <xsl:otherwise>
+            <color>
+              <xsl:value-of select="$string"/>
+            </color>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- TEMPLATE: hashes -->
