@@ -44,5 +44,5 @@ These XSLT stylesheets are for exporting content from the XML format of FreePlan
 
 # Version history
 
-**2014-10-05**: Added RevealJS exporter as well as instructions for using with FreePlane
-**2014-09-02**: First public release
+- **2014-10-05**: Added RevealJS exporter as well as instructions for using with FreePlane
+- **2014-09-02**: First public release
