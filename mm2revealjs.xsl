@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+    MINDMAPEXPORTFILTER htm;html RevealJS presentation
     (c) by Janne Cederberg, 2014
     This file is licensed under the GPL.
 -->
@@ -11,7 +12,7 @@
   <xsl:output method="html" indent="no" cdata-section-elements="body" />
   <xsl:strip-space elements="*" />
 
-  <xsl:template match="text(normalize-space()='')" />
+  <!-- xsl:template match="text(normalize-space()='')" / -->
 
   <!-- PREVENT DEFAULT OUTPUT (prevents whitespace between tags from leaking to output) -->
   <!-- xsl:template match="text()" mode="richtext">
