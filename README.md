@@ -13,7 +13,7 @@ These XSLT stylesheets are for exporting content from the XML format of FreePlan
 ### Windows
 
 1. [Download the files from this repository (zip)](https://github.com/jannecederberg/freeplane-xslt/archive/master.zip)
-2. Extract the files from the zip archive into `C:\Users\<username>\AppData\Roaming\FreePlane\<version>\xslt
+2. Extract the files from the zip archive into `C:\Users\<username>\AppData\Roaming\FreePlane\<version>\xslt`
   - Create the `xslt` directory if it doesn't exist already
 3. Restart FreePlane if you had it running
 4. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
