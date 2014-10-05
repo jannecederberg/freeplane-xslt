@@ -1,11 +1,30 @@
-# FreeMind XSLT exporter(s)
+# FreePlane/FreeMind XSLT exporter(s)
 
 ## In a nutshell
 
-These XSLT stylesheets are for exporting content from the XML format of FreeMind mindmapping tool to different output formats.
+These XSLT stylesheets are for exporting content from the XML format of FreePlane/FreeMind mindmapping tool to different output formats.
 
-* *mm2markdown*: Export to Markdown format which I then use with PanDoc to for creating slides based on Reveal.js
+* *mm2markdown*: Export to Markdown
   * Known bugs: exporting numbered lists in notes of a node does not work
+* *mm2revealjs*: Export a mindmap into a RevealJS presentation. Mindmap should only have two levels after root node!
+
+## Installation for FreePlane
+
+1. git clone https://github.com/jannecederberg/freeplane-xslt.git
+2. Copy the .xsl files into your <FreePlaneDir>/resources/xslt
+3. Restart FreePlane if it was open
+4. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
+
+## Using with FreePlane to create RevealJS slides
+
+1. Create your mindmap using FreePlane
+2. Export your mindmap from FreePlane
+  - File => Export map
+  - From the *Files of Type* dropdown choose *RevealJS presentation*
+  - Click on *Save*
+3. Open console and navigate to the directory where you saved your mindmap
+4. Run: `git clone https://github.com/hakimel/reveal.js.git`
+5. Open HTML file created in step 2 in your browser
 
 # TODO
 
@@ -13,4 +32,5 @@ These XSLT stylesheets are for exporting content from the XML format of FreeMind
 
 # Version history
 
+**2014-10-05**: Added RevealJS exporter as well as instructions for using with FreePlane
 **2014-09-02**: First public release
