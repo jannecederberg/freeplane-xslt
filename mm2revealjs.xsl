@@ -28,10 +28,10 @@
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      <link rel="stylesheet" href="reveal.js/css/reveal.min.css" />
+      <link rel="stylesheet" href="reveal.js-master/css/reveal.min.css" />
       <style type="text/css">code{white-space: pre;}</style>
-      <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme" />
-      <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
+      <link rel="stylesheet" href="reveal.js-master/css/theme/simple.css" id="theme" />
+      <link rel="stylesheet" media="print" href="reveal.js-master/css/print/pdf.css" />
     </head>
     <body>
       <div class="reveal">
@@ -40,8 +40,8 @@
         </div>
       </div>
 
-      <script src="reveal.js/lib/js/head.min.js"></script>
-      <script src="reveal.js/js/reveal.min.js"></script>
+      <script src="reveal.js-master/lib/js/head.min.js"></script>
+      <script src="reveal.js-master/js/reveal.min.js"></script>
 
       <script>
         // Full list of configuration options available here:
@@ -56,11 +56,11 @@
 
           // Optional libraries used to extend on reveal.js
           dependencies: [
-            { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-            { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-            { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-            //{ src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
-            //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+            { src: 'reveal.js-master/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+            { src: 'reveal.js-master/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+            { src: 'reveal.js-master/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+            //{ src: 'reveal.js-master/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+            //{ src: 'reveal.js-master/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
           ]});
       </script>
     </body>
