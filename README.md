@@ -28,7 +28,8 @@ These XSLT stylesheets are for exporting content from the XML format of FreePlan
 
 # TODO
 
-* Parse img tags in notes into Markdown
+* mm2markdown: Parse img tags in notes into Markdown
+* mm2revealjs: Parse FreePlane root node into h1, h2 and h3 tags by lines
 
 # Version history
 
