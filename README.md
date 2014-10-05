@@ -10,8 +10,8 @@ These XSLT stylesheets are for exporting content from the XML format of FreePlan
 
 ## Installation for FreePlane
 
-1. git clone https://github.com/jannecederberg/freeplane-xslt.git
-2. Copy the .xsl files into your <FreePlaneDir>/resources/xslt
+1. `git clone https://github.com/jannecederberg/freeplane-xslt.git`
+2. Copy the `.xsl` files into your `<FreePlaneDir>/resources/xslt`
 3. Restart FreePlane if it was open
 4. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
 
