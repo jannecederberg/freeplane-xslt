@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
+    MINDMAPEXPORTFILTER md;markdown Markdown
     (c) by Janne Cederberg, 2014
     This file is licensed under the GPL.
 -->
