@@ -23,7 +23,7 @@ These XSLT stylesheets are for exporting content from the XML format of FreePlan
   - From the *Files of Type* dropdown choose *RevealJS presentation*
   - Click on *Save*
 3. Open console and navigate to the directory where you saved your mindmap
-4. Run: `git clone https://github.com/hakimel/reveal.js.git`
+4. Run: `git clone https://github.com/jannecederberg/reveal.js.git`
 5. Open HTML file created in step 2 in your browser
 
 # TODO
