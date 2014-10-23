@@ -44,6 +44,11 @@ The Reveal.js library is required for presentations exported from FreePlane to w
 3. Rename the `reveal.js-master` directory to `reveal.js`
 4. You're done with prep! Proceed to creating your kicka** RevealJS presentations directly FreePlane!
 
+
+### Macintosh
+
+Freeplane is available for Macintosh. I haven't tested the Mac version, but I'm guessing it'll work pretty much the same as the Linux version. Check the Linux instructions.
+
 ### Linux
 
 #### Installing transformation(s)
@@ -71,7 +76,9 @@ The Reveal.js library is required for presentations exported from FreePlane to w
 # TODO
 
 * mm2markdown: Parse img tags in notes into Markdown
+* mm2revealjs: Make export standalone by using the (customized) Reveal.js from a CDN
 * mm2revealjs: Parse FreePlane root node into h1, h2 and h3 tags by lines
+* mm2revealjs: Render fourth level nodes and beyond as list items
 
 # Version history
 
