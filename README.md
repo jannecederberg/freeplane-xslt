@@ -75,10 +75,12 @@ Freeplane is available for Macintosh. I haven't tested the Mac version, but I'm 
 
 # TODO
 
-* mm2markdown: Parse img tags in notes into Markdown
-* mm2revealjs: Make export standalone by using the (customized) Reveal.js from a CDN
-* mm2revealjs: Parse FreePlane root node into h1, h2 and h3 tags by lines
-* mm2revealjs: Render fourth level nodes and beyond as list items
+* mm2markdown
+  - Parse img tags in notes into Markdown
+* mm2revealjs
+  - Make export standalone by using the (customized) Reveal.js from a CDN
+  - Parse FreePlane root node into h1, h2 and h3 tags by lines
+  - Render fourth level nodes and beyond as list items
 
 # Version history
 
