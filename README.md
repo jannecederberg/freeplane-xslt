@@ -20,7 +20,6 @@ Export FreePlane/FreeMind documents to Markdown
 
 - FreePlane program (Windows/Linux/OSX)
 - Transformation files from this repository
-- My customized version of [Hakimel](http://lab.hakimel.se)'s Reveal.js library
 
 ## Installation
 
@@ -34,16 +33,6 @@ Export FreePlane/FreeMind documents to Markdown
   - Create the `xslt` directory if it doesn't exist already
 4. Restart FreePlane if you had it running
 5. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
-
-#### Getting the Reveal.js library
-
-The Reveal.js library is required for presentations exported from FreePlane to work correctly. To obtain the Reveal.js library, follow the following instructions:
-
-1. Download [RevealJS](https://github.com/jannecederberg/reveal.js/archive/master.zip) zip-package
-2. Extract the `reveal.js-master` directory from the zip package into the directory where you want be keeping your presentation(s)
-3. Rename the `reveal.js-master` directory to `reveal.js`
-4. You're done with prep! Proceed to creating your kicka** RevealJS presentations directly FreePlane!
-
 
 ### Macintosh
 
@@ -59,11 +48,6 @@ Freeplane is available for Macintosh. I haven't tested the Mac version, but I'm 
 3. Restart FreePlane if you had it running
 4. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
 
-#### Getting the Reveal.js library
-
-1. Open console and navigate to the directory where you saved your mindmap
-2. Run: `git clone https://github.com/jannecederberg/reveal.js.git`
-
 ## Creating a Reveal.js presentation from FreePlane
 
 1. Create your mindmap using FreePlane and save it (as .mm) into the directory you extracted the reveal.js zip package
@@ -78,11 +62,14 @@ Freeplane is available for Macintosh. I haven't tested the Mac version, but I'm 
 * mm2markdown
   - Parse img tags in notes into Markdown
 * mm2revealjs
-  - Make export standalone by using the (customized) Reveal.js from a CDN
   - Parse FreePlane root node into h1, h2 and h3 tags by lines
-  - Render fourth level nodes and beyond as list items
 
 # Version history
 
-- **2014-10-05**: Added RevealJS exporter as well as instructions for using with FreePlane
-- **2014-09-02**: First public release
+- **2014-11-12**
+  - Removed need to download Reveal.js separately
+  - Level 3 and lower map nodes are shown as list items in Reveal.js
+- **2014-10-05**
+  - Added Reveal.js exporter as well as instructions for using with FreePlane
+- **2014-09-02**
+  - First public release
