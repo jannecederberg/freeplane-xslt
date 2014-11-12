@@ -9,7 +9,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xlink="http://www.w3.org/1999/xlink">
   
-  <xsl:output method="html" indent="no" cdata-section-elements="body" />
+  <xsl:output method="html" indent="yes" cdata-section-elements="body" />
   <xsl:strip-space elements="*" />
 
   <!-- xsl:template match="text(normalize-space()='')" / -->
@@ -81,7 +81,15 @@
       <xsl:apply-templates select=".." mode="depthMeasurement"/>
     </xsl:variable>
     <xsl:choose>
-      <xsl:when test="$depth > 0">
+      <xsl:when test="$depth = 0">
+        <section>
+        <xsl:call-template name="tokenizeTitle">
+          <xsl:with-param name="heading" select="@TEXT" />
+        </xsl:call-template>
+        </section>
+        <xsl:apply-templates select="node" />
+      </xsl:when>
+      <xsl:when test="$depth = 1 or $depth = 2">
         <xsl:text>&#xA;</xsl:text>
         <section>
           <xsl:call-template name="headingTag">
@@ -95,16 +103,37 @@
             <xsl:otherwise>
             </xsl:otherwise>
           </xsl:choose>
-          <xsl:apply-templates select="node" />
+          <xsl:choose>
+            <xsl:when test="$depth = 1">
+              <xsl:apply-templates select="node" />
+            </xsl:when>
+            <xsl:otherwise>
+              <ul><xsl:apply-templates select="node" /></ul>
+            </xsl:otherwise>
+          </xsl:choose>
         </section>
       </xsl:when>
+      <xsl:when test="$depth > 2">
+        <li>
+          <xsl:choose>
+            <xsl:when test="@LINK">
+              <a href="{@LINK}"><xsl:value-of select="@TEXT" /></a>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="@TEXT" />
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="node">
+              <ul><xsl:apply-templates select="node" /></ul>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:apply-templates select="node" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </li>
+      </xsl:when>
       <xsl:otherwise>
-        <section>
-        <xsl:call-template name="tokenizeTitle">
-          <xsl:with-param name="heading" select="@TEXT" />
-        </xsl:call-template>
-        </section>
-        <xsl:apply-templates select="node" />
       </xsl:otherwise>
     </xsl:choose>
     <xsl:text>&#xa;</xsl:text>
