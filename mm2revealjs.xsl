@@ -19,6 +19,9 @@
     <xsl:value-of select="normalize-space()" />
   </xsl:template -->
 
+
+<!-- MAIN -->
+
   <xsl:template match="map">
     <html>
     <head>
@@ -76,6 +79,10 @@
     </html>
   </xsl:template>
 
+
+<!-- BEGIN PARSERS -->
+
+
   <xsl:template match="node">
     <xsl:variable name="depth">
       <xsl:apply-templates select=".." mode="depthMeasurement"/>
@@ -83,9 +90,14 @@
     <xsl:choose>
       <xsl:when test="$depth = 0">
         <section>
-        <xsl:call-template name="tokenizeTitle">
-          <xsl:with-param name="heading" select="@TEXT" />
-        </xsl:call-template>
+          <h1><xsl:value-of select="@TEXT"/></h1>
+          <xsl:choose>
+            <xsl:when test="richcontent">
+              <xsl:call-template name="myrichcontent" />
+            </xsl:when>
+            <xsl:otherwise>
+            </xsl:otherwise>
+          </xsl:choose>
         </section>
         <xsl:apply-templates select="node" />
       </xsl:when>
@@ -139,23 +151,6 @@
     <xsl:text>&#xa;</xsl:text>
   </xsl:template>
 
-  <xsl:template name="tokenizeTitle">
-    <xsl:param name="heading" select="'Default Title'" />
-      <h1><xsl:value-of select="$heading"/></h1>
-    <!-- xsl:choose>
-      <xsl:when test="not(contains($text, '&#xa;'))">
-        <h1><xsl:value-of select="normalize-space($text)" /></h1>
-        <xsl:text>&#xa;</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="normalize-space(substring-before($text, '&#xa;'))" />
-        <xsl:text>&#xa;</xsl:text>
-        <xsl:call-template name="tokenizeTitle">
-          <xsl:with-param name="text" select="substring-after($text, '&#xa;')" />
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose -->
-  </xsl:template>
 
   <xsl:template name="myrichcontent">
     <xsl:copy-of select="richcontent/html/body/child::*" />
