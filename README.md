@@ -38,12 +38,12 @@ Export FreePlane/FreeMind documents to Markdown
 
 Freeplane is available for Macintosh. I haven't tested the Mac version, but I'm guessing it'll work pretty much the same as the Linux version. Check the Linux instructions.
 
-### Linux
+### Ubuntu Linux
 
 #### Installing transformation(s)
 
 1. `git clone https://github.com/jannecederberg/freeplane-xslt.git`
-2. Copy the `.xsl` files into your `~/.freeplane/<version>/xslt`
+2. Copy the `.xsl` files into your `~/.config/freeplane/<version>/xslt`
   - create the `xslt` folder if it doesn't exist
 3. Restart FreePlane if you had it running
 4. You'll now see the added exporters in the 'Files of Type' dropdown in File => Export map
